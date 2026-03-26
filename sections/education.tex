@@ -1,0 +1,72 @@
+%-------------------------------------------
+% education.tex
+% CV:     MS + BS with coursework, GPA,
+%         thesis distinction, study abroad.
+% Resume: MS + BS only.
+%-------------------------------------------
+
+\ifcv
+    %-----------CV EDUCATION-----------
+    \section{Education}
+        \resumeSubHeadingListStart
+        \resumeSubheading
+            {University of New Mexico}{Aug. 2023 -- Dec. 2025}
+            {Master of Science in Computer Science, GPA: 3.83}
+            {Albuquerque, NM}
+        \resumeItemListStart
+            \resumeItem{
+                \textbf{Thesis (awarded distinction):} \href{https://digitalrepository.unm.edu/cs_etds/138/}{\textit{Dynamic Admittance Parameterization for Non-Prehensile Multi-Robot Transport with Optimal Coordinated Planning}}
+            }
+            \resumeItem{
+                \textbf{Relevant Coursework:}
+                Parallel Processing (A$-$),
+                Machine Learning (A),
+                Controls (A$+$),
+                Advanced Machine Learning (A$+$),
+                Deep Reinforcement Learning,
+                High Performance Computing
+            }
+        \resumeItemListEnd
+        
+        \resumeSubheading
+            {University of New Mexico}{Aug. 2018 -- May 2022}
+            {Bachelor of Science in Computer Science}
+            {Albuquerque, NM}
+        \resumeItemListStart
+            \resumeItem{
+                \textbf{Relevant Coursework:}
+                Calculus III (A),
+                Differential Equations (B),
+                Linear Algebra (B),
+                Data Structures \& Algorithms I \& II (B$+$),
+                Design of Large Programs (B),
+                Computer Logic Design (B),
+                Data Organization (A$+$)
+            }
+            \resumeItem{
+                Studied abroad at Akita International University,
+                Akita, Japan (Fall 2022).
+            }
+        \resumeItemListEnd
+        \resumeSubHeadingListEnd
+
+\else
+    %-----------RESUME EDUCATION-----------
+    \section{Education}
+        \resumeSubHeadingListStart
+        \resumeSubheading
+            {University of New Mexico}{Aug. 2023 -- Dec. 2025}
+            {Master of Science in Computer Science, GPA: 3.83}
+            {Albuquerque, NM}
+        \resumeItemListStart
+            \resumeItem{
+                \textbf{Thesis (awarded distinction):} \href{https://digitalrepository.unm.edu/cs_etds/138/}{\textit{Dynamic Admittance Parameterization for Non-Prehensile Multi-Robot Transport with Optimal Coordinated Planning}}
+            }
+        \resumeItemListEnd
+        
+        \resumeSubheading
+            {University of New Mexico}{Aug. 2018 -- May 2022}
+            {Bachelor of Science in Computer Science}
+            {Albuquerque, NM}
+        \resumeSubHeadingListEnd
+\fi

@@ -1,0 +1,116 @@
+%-------------------------------------------
+% experience.tex
+% CV:     Full bullet detail per role.
+% Resume: Concise and limited bullets.
+%-------------------------------------------
+
+\ifcv
+    %-----------CV EXPERIENCE-----------
+    \section{Experience}
+        \resumeSubHeadingListStart
+        \resumeSubheading
+            {Research and Development Graduate Intern}
+            {June 2024 -- Present}
+            {Sandia National Laboratories}
+            {Albuquerque, NM}
+        \resumeItemListStart
+            \resumeItem{
+                Setup an April-Tag and PID-based outdoor experimental testbed to benchmark gesture recognition algorithms on mobile robots, evaluating reliability and accuracy across multiple platforms \pubcite{stocco2026reliability}.
+            }
+            \resumeItem{
+                Trained a physics-informed deep neural network and novel localization algorithm to rapidly estimate mechanical constraints of objects for robust autonomous robotic manipulation\pubcite{kim2025perceived}.
+            }
+            \resumeItem{
+                Developed end-to-end multi-behavior policy for quadrotor control using modern reinforcement techniques. 
+            }
+            \resumeItem{
+                Developed computer vision pipeline to track small objects across multiple video feeds simultaneously.
+            }
+        \resumeItemListEnd
+        
+        \resumeSubheading
+            {Graduate Research Assistant}
+            {Aug. 2023 -- Dec. 2025}
+            {University of New Mexico (with Prof. Melanie Moses)}
+            {Albuquerque, NM}
+        \resumeItemListStart
+            \resumeItem{
+                Performed research on autonomous cooperative transport using a mobile robot platforms with fixed manipulator arms. Developed hybrid admittance-impedance control and optimal coordinated planning approaches \pubcite{stahoviak2026dynamic}.
+            }
+            \resumeItem{
+                Research involved full-stack robot development, mechanical prototyping and assembly, manipulator integration, SLAM-based localization, and pose-estimation pipelines.
+            }
+            \resumeItem{
+                Managed a team of undergraduate researchers by defining roadmaps, allocating tasks, and presenting weekly progress updates to faculty advisors.
+            }
+            \resumeItem{
+                Maintained the UNM Bio-Computing Lab space by organizing equipment, managing inventory, and tracking the health of hardware such as computers, batteries, etc.
+            }
+        \resumeItemListEnd
+        
+        \resumeSubheading
+            {Research and Development Undergraduate Intern}
+            {Apr. 2019 -- Aug. 2022}
+            {Sandia National Laboratories}{Albuquerque, NM}
+        \resumeItemListStart
+            \resumeItem{
+                Implemented low-level motor controllers for skid-steer mobile robots using MATLAB, Arduino, Raspberry Pi, and ROS.
+            }
+            \resumeItem{
+                Developed a novel real-time RGBD-based detection, segmentation, and localization ROS package. Pipeline involved custom YOLO models and OpenCV filters, CUDA acceleration, and custom ROS messaging. All together enabled accurate centroid estimation sub-frame inference on a single GPU \pubcite{young2024rapid}.
+            }
+        \resumeItemListEnd
+        \resumeSubHeadingListEnd
+
+\else
+    %-----------RESUME EXPERIENCE-----------
+    \section{Experience}
+        \resumeSubHeadingListStart
+        \resumeSubheading
+            {Research and Development Graduate Intern}
+            {June 2024 -- Present}
+            {Sandia National Laboratories}
+            {Albuquerque, NM}
+        \resumeItemListStart
+            \resumeItem{
+                Setup an April-Tag and PID-based outdoor experimental testbed to benchmark gesture recognition algorithms on mobile robots, evaluating reliability and accuracy across multiple platforms \pubcite{stocco2026reliability}.
+            }
+            \resumeItem{
+                Trained a physics-informed deep neural network and novel localization algorithm to rapidly estimate mechanical constraints of objects for robust autonomous robotic manipulation\pubcite{kim2025perceived}.
+            }
+            \resumeItem{
+                Developed end-to-end multi-behavior policy for quadrotor control using modern reinforcement techniques. 
+            }
+        \resumeItemListEnd
+        
+        \resumeSubheading
+            {Graduate Research Assistant}
+            {Aug. 2023 -- Dec. 2025}
+            {University of New Mexico (with Prof. Melanie Moses)}
+            {Albuquerque, NM}
+        \resumeItemListStart
+            \resumeItem{
+                Performed research on autonomous cooperative transport using a mobile robot platforms with fixed manipulator arms. Developed hybrid admittance-impedance control and optimal coordinated planning approaches \pubcite{stahoviak2026dynamic}.
+            }
+            \resumeItem{
+                Research involved full-stack robot development, mechanical prototyping and assembly, manipulator integration, SLAM-based localization, and pose-estimation pipelines.
+            }
+            \resumeItem{
+                Managed a team of undergraduate researchers by defining roadmaps, allocating tasks, and presenting weekly progress updates to faculty advisors.
+            }
+        \resumeItemListEnd
+        
+        \resumeSubheading
+            {Research and Development Undergraduate Intern}
+            {Apr. 2019 -- Aug. 2022}
+            {Sandia National Laboratories}{Albuquerque, NM}
+        \resumeItemListStart
+            \resumeItem{
+                Implemented low-level motor controllers for skid-steer mobile robots using MATLAB and Arduino.
+            }
+            \resumeItem{
+                Developed a novel real-time RGBD-based detection, segmentation, and localization ROS package using YOLO and OpenCV. CUDA acceleration enabled sub-frame inference on a single GPU \pubcite{young2024rapid}.
+            }
+        \resumeItemListEnd
+        \resumeSubHeadingListEnd
+\fi
