@@ -71,26 +71,49 @@
   }
 }
 
-\newcommand{\resumeSubheading}[4]{
+% One full-width row: #1 flush left, #2 flush right. Every heading below
+% is built from it.
+\newcommand{\resumeRow}[2]{%
+  \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    #1 & #2 \\
+  \end{tabular*}\vspace{-7pt}%
+}
+
+% True right after an org or title row, false after a bullet list.
+\newif\ifresumeafterheading
+
+% List spacing saved while a stacked \resumeTitle uses a rigid copy.
+\newskip\resumeSavedItemsep
+\newskip\resumeSavedParskip
+
+% Bold organization (employer or university) and its location.
+\newcommand{\resumeOrg}[2]{%
   \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & #2 \\
-      \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-7pt}
+  \resumeRow{\textbf{#1}}{#2}%
+  \global\resumeafterheadingtrue
 }
 
-\newcommand{\resumeSubSubheading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \textit{\small#1} & \textit{\small #2} \\
-    \end{tabular*}\vspace{-7pt}
+% Italic title (job title or degree) and its dates. Repeat it for
+% promotions; bullets may follow any title. Stacked under a row, a title
+% keeps rigid spacing like the rows of one table (1\skip drops a skip's
+% stretch and shrink); after bullets it gets the usual flexible gap.
+\newcommand{\resumeTitle}[2]{%
+  \vspace{-2pt}%
+  \ifresumeafterheading
+    \resumeSavedItemsep=\itemsep \resumeSavedParskip=\parskip
+    \itemsep=1\itemsep\relax \parskip=1\parskip\relax
+  \fi
+  \item
+  \resumeRow{\textit{\small#1}}{\textit{\small #2}}%
+  \ifresumeafterheading
+    \itemsep=\resumeSavedItemsep \parskip=\resumeSavedParskip
+  \fi
+  \global\resumeafterheadingtrue
 }
 
-\newcommand{\resumeProjectHeading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \small#1 & #2 \\
-    \end{tabular*}\vspace{-7pt}
+\newcommand{\resumeProjectHeading}[2]{%
+  \item
+  \resumeRow{\small#1}{#2}%
 }
 
 \newcommand{\resumeSubItem}[1]{
@@ -103,11 +126,13 @@
 
 \newcommand{\resumeSubHeadingListStart}{
   \begin{itemize}[leftmargin=0.15in, label={}]
+  \global\resumeafterheadingfalse
 }
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
 \newcommand{\resumeItemListStart}{\begin{itemize}}
 \newcommand{\resumeItemListEnd}{
   \end{itemize}\vspace{-5pt}
+  \global\resumeafterheadingfalse
 }
 
 \newcounter{pubcounter}
