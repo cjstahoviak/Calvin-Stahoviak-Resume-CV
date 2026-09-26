@@ -63,9 +63,11 @@
 \pdfgentounicode=1
 
 %----------CUSTOM COMMANDS----------
+% \unskip drops the trailing space of #1; without it, a bullet that exactly
+% fills its last line breaks at that space and adds an empty line.
 \newcommand{\resumeItem}[1]{
   \item\small{
-    {#1 \vspace{-2pt}}
+    {#1\unskip\vspace{-2pt}}
   }
 }
 
