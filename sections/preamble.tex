@@ -80,3 +80,11 @@
 % keeps its default heading spacing exactly, minus the stretch.
 \beforetitleunit=1\beforetitleunit\relax
 \aftertitleunit=1\aftertitleunit\relax
+
+%----------PAGE BREAKS----------
+% LaTeX favors a page break just before a list, which can strand an entry
+% heading at the bottom of a page with its bullets on the next. Forbid it;
+% pages can still break between bullets and between entries.
+\makeatletter
+\@beginparpenalty=10000
+\makeatother

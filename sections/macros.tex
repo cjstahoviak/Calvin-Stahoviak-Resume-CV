@@ -34,11 +34,12 @@
 }
 
 % One full-width row: #1 flush left, #2 flush right. Every heading below
-% is built from it.
+% is built from it. \nopagebreak keeps each row on the same page as what
+% follows it: the next row of the heading, or its first bullet.
 \newcommand{\resumeRow}[2]{%
   \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
     #1 & #2 \\
-  \end{tabular*}\vspace{-7pt}%
+  \end{tabular*}\nopagebreak\vspace{-7pt}%
 }
 
 % Bold organization (employer or university) and its location.
