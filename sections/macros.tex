@@ -41,36 +41,17 @@
   \end{tabular*}\vspace{-7pt}%
 }
 
-% True right after an org or title row, false after a bullet list.
-\newif\ifresumeafterheading
-
-% List spacing saved while a stacked \resumeTitle uses a rigid copy.
-\newskip\resumeSavedItemsep
-\newskip\resumeSavedParskip
-
 % Bold organization (employer or university) and its location.
 \newcommand{\resumeOrg}[2]{%
   \vspace{-2pt}\item
   \resumeRow{\textbf{#1}}{#2}%
-  \global\resumeafterheadingtrue
 }
 
 % Italic title (job title or degree) and its dates. Repeat it for
-% promotions; bullets may follow any title. Stacked under a row, a title
-% keeps rigid spacing like the rows of one table (1\skip drops a skip's
-% stretch and shrink); after bullets it gets the usual flexible gap.
+% promotions; bullets may follow any title.
 \newcommand{\resumeTitle}[2]{%
-  \vspace{-2pt}%
-  \ifresumeafterheading
-    \resumeSavedItemsep=\itemsep \resumeSavedParskip=\parskip
-    \itemsep=1\itemsep\relax \parskip=1\parskip\relax
-  \fi
-  \item
+  \vspace{-2pt}\item
   \resumeRow{\textit{\small#1}}{\textit{\small #2}}%
-  \ifresumeafterheading
-    \itemsep=\resumeSavedItemsep \parskip=\resumeSavedParskip
-  \fi
-  \global\resumeafterheadingtrue
 }
 
 \newcommand{\resumeProjectHeading}[2]{%
@@ -88,13 +69,11 @@
 
 \newcommand{\resumeSubHeadingListStart}{
   \begin{itemize}[leftmargin=0.15in, label={}]
-  \global\resumeafterheadingfalse
 }
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
 \newcommand{\resumeItemListStart}{\begin{itemize}}
 \newcommand{\resumeItemListEnd}{
   \end{itemize}\vspace{-5pt}
-  \global\resumeafterheadingfalse
 }
 
 %----------PUBLICATIONS----------

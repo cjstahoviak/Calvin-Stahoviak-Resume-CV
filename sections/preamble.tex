@@ -56,10 +56,27 @@
 \raggedright
 \setlength{\tabcolsep}{0in}
 
-% Sections formatting
+% Sections formatting. No \color in the rule's code: a color change there
+% leaves a marker that lets a page break right below the heading.
 \titleformat{\section}{
   \vspace{-4pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+}{}{0em}{}[\titlerule \vspace{-5pt}]
 
 % Ensure generated pdf is machine readable/ATS parsable
 \pdfgentounicode=1
+
+%----------RIGID SPACING----------
+% Every gap has a fixed size. LaTeX normally lets list, paragraph, and
+% heading spacing stretch or shrink to fill a page; here a page never
+% squeezes to fit, so content that runs long moves to the next page
+% instead. 1\skip keeps a skip's natural size but drops its stretch and
+% shrink, so the layout matches LaTeX's wherever nothing was squeezed.
+\setlist{before={\itemsep=1\itemsep\relax \parsep=1\parsep\relax
+  \topsep=1\topsep\relax \partopsep=1\partopsep\relax}}
+\topsep=1\topsep\relax  % outside lists, e.g. the centered header
+\partopsep=1\partopsep\relax
+\setlength{\parskip}{0pt}
+% titlesec spaces headings in multiples of these units; fixing the units
+% keeps its default heading spacing exactly, minus the stretch.
+\beforetitleunit=1\beforetitleunit\relax
+\aftertitleunit=1\aftertitleunit\relax
