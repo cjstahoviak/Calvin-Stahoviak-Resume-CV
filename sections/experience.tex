@@ -1,137 +1,80 @@
 %-------------------------------------------
 % experience.tex
-% CV:     Full bullet detail per role.
-% Resume: Concise and limited bullets.
+% One copy of every role and bullet.
+% Resume: the shared bullets.
+% CV adds: the \cvonly bullets.
+% \cvresume bullets are worded differently
+% in each version.
 %-------------------------------------------
 
-\ifcv
-    %-----------CV EXPERIENCE-----------
-    \section{Experience}
-        \resumeSubHeadingListStart
-        \resumeOrg
-            {Sandia National Laboratories}
-            {Albuquerque, NM}
-        \resumeTitle
-            {Member of Technical Staff}
-            {Aug. 2026 -- Present}
-        \resumeItemListStart
-            \resumeItem{
-                Own computer vision (detection, tracking, localization) for robotic automated-assembly systems, and support vision work across other robotics and AI research projects.
-            }
-            \resumeItem{
-                Contribute to funded research in AI-driven robotic assembly, adversarial ML, and RL-based quadrotor control.
-            }
-        \resumeItemListEnd
-        \resumeTitle
-            {Research and Development Graduate Intern}
-            {June 2024 -- Aug. 2026}
-        \resumeItemListStart
-            \resumeItem{
-                Designed an outdoor reliability benchmark for camera-based hand-sign recognition on a quadruped robot \pubcite{stocco2026reliability}.
-            }
-            \resumeItem{
-                Developed and trained a physics-informed neural network that rapidly identifies the linear and rotational constraints on an object's motion for robotic manipulation, with under 1\textdegree{} of error on three real mechanisms \pubcite{kim2026perceived}.
-            }
-            \resumeItem{
-                Developed an end-to-end, multi-behavior reinforcement learning policy for quadrotor control.
-            }
-            \resumeItem{
-                Developed a computer vision pipeline to track small objects across multiple video feeds simultaneously.
-            }
-        \resumeItemListEnd
+\section{Experience}
+    \resumeSubHeadingListStart
+    \resumeOrg
+        {Sandia National Laboratories}
+        {Albuquerque, NM}
+    \resumeTitle
+        {Member of Technical Staff}
+        {Aug. 2026 -- Present}
+    \resumeItemListStart
+        \resumeItem{
+            Own computer vision (detection, tracking, localization) for robotic automated-assembly systems, and support vision work across other robotics and AI research projects.
+        }
+        \resumeItem{
+            Contribute to funded research in AI-driven robotic assembly, adversarial ML, and RL-based quadrotor control.
+        }
+    \resumeItemListEnd
+    \resumeTitle
+        {Research and Development Graduate Intern}
+        {June 2024 -- Aug. 2026}
+    \resumeItemListStart
+        \resumeItem{
+            Designed an outdoor reliability benchmark for camera-based hand-sign recognition on a quadruped robot \pubcite{stocco2026reliability}.
+        }
+        \resumeItem{
+            Developed and trained a physics-informed neural network that rapidly identifies the linear and rotational constraints on an object's motion for robotic manipulation, with under 1\textdegree{} of error on three real mechanisms \pubcite{kim2026perceived}.
+        }
+        \cvonly{\resumeItem{
+            Developed an end-to-end, multi-behavior reinforcement learning policy for quadrotor control.
+        }}
+        \cvonly{\resumeItem{
+            Developed a computer vision pipeline to track small objects across multiple video feeds simultaneously.
+        }}
+    \resumeItemListEnd
 
-        \resumeOrg
-            {University of New Mexico}
-            {Albuquerque, NM}
-        \resumeTitle
-            {Graduate Research Assistant (with Prof. Melanie Moses)}
-            {Aug. 2023 -- Dec. 2025}
-        \resumeItemListStart
-            \resumeItem{
-                Designed, built, and wrote the full software stack for two mobile manipulators; developed dynamic admittance control and optimal coordinated planning for autonomous cooperative transport \pubcite{stahoviak2026dynamic}.
-            }
-            \resumeItem{
-                Development spanned mechanical prototyping and assembly, manipulator integration, SLAM-based localization, and pose-estimation pipelines.
-            }
-            \resumeItem{
-                Led two undergraduate researchers: set the project roadmap, assigned tasks, and delivered milestones to advisors.
-            }
-        \resumeItemListEnd
+    \resumeOrg
+        {University of New Mexico}
+        {Albuquerque, NM}
+    \resumeTitle
+        {Graduate Research Assistant (with Prof. Melanie Moses)}
+        {Aug. 2023 -- Dec. 2025}
+    \resumeItemListStart
+        \resumeItem{
+            Designed, built, and wrote the full software stack for two mobile manipulators; developed dynamic admittance control and optimal coordinated planning for autonomous cooperative transport \pubcite{stahoviak2026dynamic}.
+        }
+        \cvonly{\resumeItem{
+            Development spanned mechanical prototyping and assembly, manipulator integration, SLAM-based localization, and pose-estimation pipelines.
+        }}
+        \resumeItem{
+            Led two undergraduate researchers: set the project roadmap, assigned tasks, and delivered milestones to advisors.
+        }
+    \resumeItemListEnd
 
-        \resumeOrg
-            {Sandia National Laboratories}
-            {Albuquerque, NM}
-        \resumeTitle
-            {Research and Development Undergraduate Intern}
-            {Apr. 2019 -- Aug. 2022}
-        \resumeItemListStart
-            \resumeItem{
-                Implemented low-level PID control for skid-steer mobile robots using MATLAB, Arduino, and Raspberry Pi, integrated with ROS.
-            }
-            \resumeItem{
-                Developed a novel RGBD-based detection, segmentation, and localization ROS package with custom YOLO models, OpenCV filters, CUDA acceleration, and custom ROS messaging, estimating object centroids faster than the camera's 30\,Hz frame rate on a single GPU \pubcite{young2024rapid}.
-            }
-        \resumeItemListEnd
-        \resumeSubHeadingListEnd
-
-\else
-    %-----------RESUME EXPERIENCE-----------
-    \section{Experience}
-        \resumeSubHeadingListStart
-        \resumeOrg
-            {Sandia National Laboratories}
-            {Albuquerque, NM}
-        \resumeTitle
-            {Member of Technical Staff}
-            {Aug. 2026 -- Present}
-        \resumeItemListStart
-            \resumeItem{
-                Own computer vision (detection, tracking, localization) for robotic automated-assembly systems, and support vision work across other robotics and AI research projects.
-            }
-            \resumeItem{
-                Contribute to funded research in AI-driven robotic assembly, adversarial ML, and RL-based quadrotor control.
-            }
-        \resumeItemListEnd
-        \resumeTitle
-            {Research and Development Graduate Intern}
-            {June 2024 -- Aug. 2026}
-        \resumeItemListStart
-            \resumeItem{
-                Designed an outdoor reliability benchmark for camera-based hand-sign recognition on a quadruped robot \pubcite{stocco2026reliability}.
-            }
-            \resumeItem{
-                Developed and trained a physics-informed neural network that rapidly identifies the linear and rotational constraints on an object's motion for robotic manipulation, with under 1\textdegree{} of error on three real mechanisms \pubcite{kim2026perceived}.
-            }
-        \resumeItemListEnd
-        
-        \resumeOrg
-            {University of New Mexico}
-            {Albuquerque, NM}
-        \resumeTitle
-            {Graduate Research Assistant (with Prof. Melanie Moses)}
-            {Aug. 2023 -- Dec. 2025}
-        \resumeItemListStart
-            \resumeItem{
-                Designed, built, and wrote the full software stack for two mobile manipulators; developed dynamic admittance control and optimal coordinated planning for autonomous cooperative transport \pubcite{stahoviak2026dynamic}.
-            }
-            \resumeItem{
-                Led two undergraduate researchers: set the project roadmap, assigned tasks, and delivered milestones to advisors.
-            }
-        \resumeItemListEnd
-
-        \resumeOrg
-            {Sandia National Laboratories}
-            {Albuquerque, NM}
-        \resumeTitle
-            {Research and Development Undergraduate Intern}
-            {Apr. 2019 -- Aug. 2022}
-        \resumeItemListStart
-            \resumeItem{
-                Implemented low-level PID control for skid-steer mobile robots in MATLAB and Arduino, integrated with ROS.
-            }
-            \resumeItem{
-                Developed a novel RGBD-based detection, segmentation, and localization ROS package using YOLO and OpenCV, with CUDA acceleration running it in real time on a single GPU \pubcite{young2024rapid}.
-            }
-        \resumeItemListEnd
-        \resumeSubHeadingListEnd
-\fi
+    \resumeOrg
+        {Sandia National Laboratories}
+        {Albuquerque, NM}
+    \resumeTitle
+        {Research and Development Undergraduate Intern}
+        {Apr. 2019 -- Aug. 2022}
+    \resumeItemListStart
+        \cvresume{\resumeItem{
+            Implemented low-level PID control for skid-steer mobile robots using MATLAB, Arduino, and Raspberry Pi, integrated with ROS.
+        }}{\resumeItem{
+            Implemented low-level PID control for skid-steer mobile robots in MATLAB and Arduino, integrated with ROS.
+        }}
+        \cvresume{\resumeItem{
+            Developed a novel RGBD-based detection, segmentation, and localization ROS package with custom YOLO models, OpenCV filters, CUDA acceleration, and custom ROS messaging, estimating object centroids faster than the camera's 30\,Hz frame rate on a single GPU \pubcite{young2024rapid}.
+        }}{\resumeItem{
+            Developed a novel RGBD-based detection, segmentation, and localization ROS package using YOLO and OpenCV, with CUDA acceleration running it in real time on a single GPU \pubcite{young2024rapid}.
+        }}
+    \resumeItemListEnd
+    \resumeSubHeadingListEnd

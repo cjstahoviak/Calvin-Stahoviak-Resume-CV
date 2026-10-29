@@ -1,6 +1,7 @@
 %-------------------------------------------
 % heading.tex
-% Contact header and summary identical for resume and CV.
+% Contact header, shared by resume and CV,
+% then a summary that differs between them.
 %-------------------------------------------
 
 \begin{center}
@@ -12,12 +13,10 @@
     \small \textbf{Active DOE L Clearance}
     \\ \vspace{2pt}
 
-\ifcv
-    %----------CV HEADING----------
+\cvresume{%
     \small Roboticist at Sandia National Laboratories with an M.S. in Computer Science, building computer vision, reinforcement learning, and control systems for autonomous robots. Experience spans mobile robot and manipulator control, robotic simulation, supervised learning, and CUDA-accelerated perception, with published work in robotic manipulation and multi-robot transport.
-\else
-    %----------RESUME HEADING----------
+}{%
     \small Roboticist at Sandia National Laboratories with an M.S. in Computer Science, building computer vision, reinforcement learning, and control systems for autonomous robots. Published in robotic manipulation and multi-robot transport.
-\fi
+}
 
 \end{center}

@@ -1,10 +1,26 @@
 %-------------------------------------------
 % preamble.tex
-% Shared packages, layout settings, and
-% custom commands for resume and CV.
+% Shared packages, layout settings, the resume/CV
+% switch, and custom commands.
 %-------------------------------------------
 
 \documentclass[letterpaper,11pt]{article}
+
+%----------RESUME OR CV----------
+% cv.tex defines \buildcv before loading this file; any other root
+% (resume.tex) builds the one-page resume.
+\newif\ifcv
+\ifdefined\buildcv \cvtrue \fi
+
+% Write each entry once and mark only what differs between the versions:
+%   \cvonly{...}             CV only
+%   \resumeonly{...}         resume only
+%   \cvresume{CV}{resume}    different text in each
+% Arguments can't hold verbatim text; escape any % or # in a URL.
+\newcommand{\cvonly}[1]{\ifcv\ignorespaces#1\fi\ignorespaces}
+\newcommand{\resumeonly}[1]{\ifcv\else\ignorespaces#1\fi\ignorespaces}
+\newcommand{\cvresume}[2]{%
+  \ifcv\ignorespaces#1\else\ignorespaces#2\fi\ignorespaces}
 
 \usepackage{latexsym}
 \usepackage[empty]{fullpage}
