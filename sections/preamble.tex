@@ -1,26 +1,16 @@
 %-------------------------------------------
 % preamble.tex
-% Shared packages, layout settings, the resume/CV
-% switch, and custom commands.
+% Document setup shared by the resume and CV:
+% paper, packages, margins, fonts, and the
+% section heading style. The entry commands
+% live in macros.tex.
+%
+% Based on Jake's Resume by Jake Gutierrez
+% (github.com/jakegut/resume, MIT), itself
+% based on github.com/sb2nov/resume (MIT).
 %-------------------------------------------
 
 \documentclass[letterpaper,11pt]{article}
-
-%----------RESUME OR CV----------
-% cv.tex defines \buildcv before loading this file; any other root
-% (resume.tex) builds the one-page resume.
-\newif\ifcv
-\ifdefined\buildcv \cvtrue \fi
-
-% Write each entry once and mark only what differs between the versions:
-%   \cvonly{...}             CV only
-%   \resumeonly{...}         resume only
-%   \cvresume{CV}{resume}    different text in each
-% Arguments can't hold verbatim text; escape any % or # in a URL.
-\newcommand{\cvonly}[1]{\ifcv\ignorespaces#1\fi\ignorespaces}
-\newcommand{\resumeonly}[1]{\ifcv\else\ignorespaces#1\fi\ignorespaces}
-\newcommand{\cvresume}[2]{%
-  \ifcv\ignorespaces#1\else\ignorespaces#2\fi\ignorespaces}
 
 \usepackage[empty]{fullpage}
 \usepackage{titlesec}
@@ -71,84 +61,3 @@
 
 % Ensure generated pdf is machine readable/ATS parsable
 \pdfgentounicode=1
-
-%----------CUSTOM COMMANDS----------
-% \unskip drops the trailing space of #1; without it, a bullet that exactly
-% fills its last line breaks at that space and adds an empty line.
-\newcommand{\resumeItem}[1]{
-  \item\small{
-    {#1\unskip\vspace{-2pt}}
-  }
-}
-
-% One full-width row: #1 flush left, #2 flush right. Every heading below
-% is built from it.
-\newcommand{\resumeRow}[2]{%
-  \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-    #1 & #2 \\
-  \end{tabular*}\vspace{-7pt}%
-}
-
-% True right after an org or title row, false after a bullet list.
-\newif\ifresumeafterheading
-
-% List spacing saved while a stacked \resumeTitle uses a rigid copy.
-\newskip\resumeSavedItemsep
-\newskip\resumeSavedParskip
-
-% Bold organization (employer or university) and its location.
-\newcommand{\resumeOrg}[2]{%
-  \vspace{-2pt}\item
-  \resumeRow{\textbf{#1}}{#2}%
-  \global\resumeafterheadingtrue
-}
-
-% Italic title (job title or degree) and its dates. Repeat it for
-% promotions; bullets may follow any title. Stacked under a row, a title
-% keeps rigid spacing like the rows of one table (1\skip drops a skip's
-% stretch and shrink); after bullets it gets the usual flexible gap.
-\newcommand{\resumeTitle}[2]{%
-  \vspace{-2pt}%
-  \ifresumeafterheading
-    \resumeSavedItemsep=\itemsep \resumeSavedParskip=\parskip
-    \itemsep=1\itemsep\relax \parskip=1\parskip\relax
-  \fi
-  \item
-  \resumeRow{\textit{\small#1}}{\textit{\small #2}}%
-  \ifresumeafterheading
-    \itemsep=\resumeSavedItemsep \parskip=\resumeSavedParskip
-  \fi
-  \global\resumeafterheadingtrue
-}
-
-\newcommand{\resumeProjectHeading}[2]{%
-  \item
-  \resumeRow{\small#1}{#2}%
-}
-
-\newcommand{\resumeSubItem}[1]{
-  \resumeItem{#1}\vspace{-4pt}
-}
-
-\renewcommand\labelitemii{
-  $\vcenter{\hbox{\tiny$\bullet$}}$
-}
-
-\newcommand{\resumeSubHeadingListStart}{
-  \begin{itemize}[leftmargin=0.15in, label={}]
-  \global\resumeafterheadingfalse
-}
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{
-  \end{itemize}\vspace{-5pt}
-  \global\resumeafterheadingfalse
-}
-
-\newcounter{pubcounter}
-\newcommand{\pubitem}[2]{
-  \refstepcounter{pubcounter}
-  \label{pub:#1}
-  \item[{\small[\thepubcounter]}] #2
-}
-\newcommand{\pubcite}[1]{[\ref{pub:#1}]}
