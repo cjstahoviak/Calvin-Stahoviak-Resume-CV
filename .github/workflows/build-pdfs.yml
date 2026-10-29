@@ -1,18 +1,25 @@
 name: Build and publish PDFs
 
-# Builds the resume and CV on every push to main (including pushes from
-# Overleaf) and publishes them with GitHub Pages. Because the user site
-# (cjstahoviak.github.io) has a custom domain, this repo's Pages site is
-# served under it, so the latest PDFs are always at:
-#   https://calvinstahoviak.com/Calvin-Stahoviak-Resume-CV/Calvin_Stahoviak_Resume.pdf
-#   https://calvinstahoviak.com/Calvin-Stahoviak-Resume-CV/Calvin_Stahoviak_CV.pdf
-# The website links there, plus short links at /resume and /cv. If a build
-# fails, nothing is published and the previous PDFs stay live.
+# Builds the resume (resume.tex) and CV (cv.tex) on every push to main,
+# including pushes from Overleaf.
+#   - The PDFs are always attached to the run as a downloadable artifact:
+#     Actions tab > the run > Artifacts.
+#   - With PUBLISH_PAGES set to true, they are also published with GitHub
+#     Pages as <PDF_NAME>_Resume.pdf and <PDF_NAME>_CV.pdf. Turn Pages on
+#     first: Settings > Pages > Source: GitHub Actions.
+# A LaTeX error or an undefined \pubcite reference fails the build and
+# nothing is published, so the previous PDFs stay live.
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
+
+env:
+  # Output file names: <PDF_NAME>_Resume.pdf and <PDF_NAME>_CV.pdf.
+  PDF_NAME: Calvin_Stahoviak
+  # "true": also publish the PDFs with GitHub Pages. "false": build only.
+  PUBLISH_PAGES: "true"
 
 permissions:
   contents: read
@@ -27,6 +34,8 @@ jobs:
   build:
     # Pinned so the TeX Live version only changes when this line does.
     runs-on: ubuntu-24.04
+    outputs:
+      publish: ${{ env.PUBLISH_PAGES }}
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -68,9 +77,10 @@ jobs:
       - name: Assemble site
         run: |
           mkdir -p _site
-          cp resume.pdf _site/Calvin_Stahoviak_Resume.pdf
-          cp cv.pdf _site/Calvin_Stahoviak_CV.pdf
-          cat > _site/index.html <<'EOF'
+          cp resume.pdf "_site/${PDF_NAME}_Resume.pdf"
+          cp cv.pdf "_site/${PDF_NAME}_CV.pdf"
+          name="${PDF_NAME//_/ }"
+          cat > _site/index.html <<EOF
           <!doctype html>
           <html lang="en">
           <head>
@@ -78,26 +88,33 @@ jobs:
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta name="color-scheme" content="light dark">
             <meta name="robots" content="noindex">
-            <title>Calvin Stahoviak: Resume and CV</title>
+            <title>${name}: Resume and CV</title>
           </head>
           <body style="font-family: sans-serif; margin: 3rem auto; max-width: 32rem; padding: 0 1rem">
-            <h1>Calvin Stahoviak</h1>
+            <h1>${name}</h1>
             <ul>
-              <li><a href="Calvin_Stahoviak_Resume.pdf">Resume (PDF)</a></li>
-              <li><a href="Calvin_Stahoviak_CV.pdf">CV (PDF)</a></li>
+              <li><a href="${PDF_NAME}_Resume.pdf">Resume (PDF)</a></li>
+              <li><a href="${PDF_NAME}_CV.pdf">CV (PDF)</a></li>
             </ul>
-            <p><a href="/">calvinstahoviak.com</a></p>
           </body>
           </html>
           EOF
 
+      - name: Attach PDFs to the run
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.PDF_NAME }}_PDFs
+          path: _site/*.pdf
+
       - name: Upload Pages artifact
+        if: env.PUBLISH_PAGES == 'true'
         uses: actions/upload-pages-artifact@v4
         with:
           path: _site
 
   deploy:
     needs: build
+    if: needs.build.outputs.publish == 'true'
     runs-on: ubuntu-24.04
     environment:
       name: github-pages
